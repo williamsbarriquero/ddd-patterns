@@ -17,6 +17,10 @@ export default class Customer {
         return this._name;
     }
 
+    set address(address: Address) {
+        this._address = address;
+    }
+
     isActive(): boolean {
         return this._active;
     }
@@ -45,9 +49,5 @@ export default class Customer {
 
     deactivate() {
         this._active = false;
-    }
-
-    set address(address: Address) {
-        this._address = address;
     }
 }
