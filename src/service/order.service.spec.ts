@@ -1,5 +1,6 @@
 import OrderItem from '../entity/order_item';
 import Order from '../entity/order';
+import OrderService from './order.service';
 
 describe('Order service unit tests', () => {
   it('should get total of all orders', () => {
