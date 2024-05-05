@@ -14,7 +14,8 @@
     "typescript": "^3.9.10"
   },
   "scripts": {
-    "test": "npm run tsc -- --noEmit jest",
+    "test": "jest",
+    "tsc-test": "npm run tsc -- --noEmit jest",
     "tsc": "tsc",
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
