@@ -1,7 +1,7 @@
 import OrderItem from './order-item';
 
 export default class Order {
-  private _id: string;
+  private readonly _id: string;
   private _customerId: string;
   private _items: OrderItem[] = [];
 
@@ -11,6 +11,10 @@ export default class Order {
     this._items = items;
 
     this.validate();
+  }
+
+  get id(): string {
+    return this._id;
   }
 
   validate() {
