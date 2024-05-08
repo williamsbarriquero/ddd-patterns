@@ -12,7 +12,13 @@
   "rules": {
     "prettier/prettier": [
       "error"
-    ]
+    ],
+    "ban-ts-ignore": true
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "node_modules"
+    ]
+  }
 }
