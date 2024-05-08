@@ -11,19 +11,18 @@ export default class OrderItemModel extends Model {
   @Column
   declare id: string;
 
+  @ForeignKey(() => OrderModel)
+  @Column({ allowNull: false })
+  declare order_id: string;
+
+  declare order: OrderModel;
+
   @ForeignKey(() => ProductModel)
   @Column({ allowNull: false })
   declare product_id: string;
 
   @BelongsTo(() => ProductModel)
-  declare product: ProductModel;
-
-  @ForeignKey(() => OrderModel)
-  @Column({ allowNull: false })
-  declare order_id: string;
-
-  @BelongsTo(() => OrderModel)
-  declare order: OrderModel;
+  public declare product: ProductModel;
 
   @Column({ allowNull: false })
   declare quantity: number;
@@ -33,10 +32,4 @@ export default class OrderItemModel extends Model {
 
   @Column({ allowNull: false })
   declare price: number;
-
-  toJSON<T extends any>(): T {
-    // @ts-ignore
-    return super.toJSON();
-  }
-
 }

@@ -12,8 +12,7 @@
   "rules": {
     "prettier/prettier": [
       "error"
-    ],
-    "ban-ts-ignore": true
+    ]
   },
   "rulesDirectory": [],
   "linterOptions": {
