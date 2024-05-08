@@ -2,7 +2,7 @@ import Address from './address';
 
 export default class Customer {
 
-  private _id: string;
+  private readonly _id: string;
   private _name: string = '';
   private _address!: Address;
   private _active: boolean = false;
@@ -26,8 +26,8 @@ export default class Customer {
     return this._rewardPoints;
   }
 
-  set address(address: Address) {
-    this._address = address;
+  get address(): Address {
+    return this._address;
   }
 
   isActive(): boolean {
@@ -47,6 +47,10 @@ export default class Customer {
   changeName(name: string) {
     this._name = name;
     this.validate();
+  }
+
+  changeAddress(address: Address) {
+    this._address = address;
   }
 
   activate() {
