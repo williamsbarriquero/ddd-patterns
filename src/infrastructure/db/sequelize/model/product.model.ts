@@ -8,11 +8,11 @@ export default class ProductModel extends Model {
 
   @PrimaryKey
   @Column
-  declare id: string;
+  public declare id: string;
 
   @Column({ allowNull: false })
-  declare name: string;
+  public declare name: string;
 
   @Column({ allowNull: false })
-  declare price: number;
-};
+  public declare price: number;
+}

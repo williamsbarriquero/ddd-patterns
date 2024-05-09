@@ -12,7 +12,35 @@
   "rules": {
     "prettier/prettier": [
       "error"
-    ]
+    ],
+    "object-literal-sort-keys": false,
+    "import-name": [
+      false
+    ],
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-first"
+      }
+    ],
+    "grouped-imports": true,
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "allow-leading-underscore",
+        "allow-pascal-case",
+        "allow-trailing-underscore",
+        "require-const-for-all-caps"
+      ]
+    },
+    "no-unused-expression": [
+      false,
+      "allow-fast-null-checks"
+    ],
+    "ban-ts-ignore": false,
+    "no-shadowed-variable": false
   },
   "rulesDirectory": [],
   "linterOptions": {

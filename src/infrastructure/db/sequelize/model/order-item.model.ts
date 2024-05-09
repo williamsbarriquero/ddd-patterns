@@ -1,35 +1,36 @@
 import { BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
-import ProductModel from './product.model';
+import OrderItem from '../../../../domain/entity/order-item';
 import OrderModel from './order.model';
+import ProductModel from './product.model';
 
 @Table({
   tableName: 'order_items',
   timestamps: false,
 })
-export default class OrderItemModel extends Model {
+export default class OrderItemModel extends Model<OrderItem> {
   @PrimaryKey
   @Column
-  declare id: string;
+  public declare id: string;
 
   @ForeignKey(() => OrderModel)
   @Column({ allowNull: false })
-  declare order_id: string;
+  public declare orderId: string;
 
-  declare order: OrderModel;
+  public declare order: OrderModel;
 
   @ForeignKey(() => ProductModel)
   @Column({ allowNull: false })
-  declare product_id: string;
+  public declare productId: string;
 
   @BelongsTo(() => ProductModel)
   public declare product: ProductModel;
 
   @Column({ allowNull: false })
-  declare quantity: number;
+  public declare quantity: number;
 
   @Column({ allowNull: false })
-  declare name: string;
+  public declare name: string;
 
   @Column({ allowNull: false })
-  declare price: number;
+  public declare price: number;
 }

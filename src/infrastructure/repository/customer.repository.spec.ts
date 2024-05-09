@@ -1,19 +1,20 @@
 import { Sequelize } from 'sequelize-typescript';
+import Address from '../../domain/entity/address';
+import Customer from '../../domain/entity/customer';
 import CustomerModel from '../db/sequelize/model/customer.model';
 import CustomerRepository from './customer.repository';
-import Customer from '../../domain/entity/customer';
-import Address from '../../domain/entity/address';
 
 describe('Customer repository test', () => {
   let sequelize: Sequelize;
 
   beforeEach(async () => {
-    sequelize = new Sequelize({
-      dialect: 'sqlite',
-      storage: ':memory:',
-      logging: false,
-      sync: { force: true },
-    });
+    sequelize = new Sequelize(
+      {
+        dialect: 'sqlite',
+        storage: ':memory:',
+        logging: false,
+        sync: { force: true },
+      });
 
     sequelize.addModels([CustomerModel]);
     await sequelize.sync();
@@ -32,16 +33,18 @@ describe('Customer repository test', () => {
 
     const customerModel = await CustomerModel.findOne({ where: { id: '123' } });
 
-    expect(customerModel.toJSON()).toStrictEqual({
-      id: '123',
-      name: customer.name,
-      active: customer.isActive(),
-      rewardPoints: customer.rewardPoints,
-      street: address.street,
-      number: address.number,
-      zipcode: address.zip,
-      city: address.city,
-    });
+    expect(customerModel.toJSON()).toStrictEqual(
+      {
+        id: '123',
+        name: customer.name,
+        active: customer.isActive(),
+        rewardPoints: customer.rewardPoints,
+        street: address.street,
+        number: address.number,
+        zipcode: address.zip,
+        city: address.city,
+      },
+    );
   });
 
   it('should update a customer', async () => {
@@ -55,16 +58,18 @@ describe('Customer repository test', () => {
     await customerRepository.update(customer);
     const customerModel = await CustomerModel.findOne({ where: { id: '123' } });
 
-    expect(customerModel.toJSON()).toStrictEqual({
-      id: '123',
-      name: customer.name,
-      active: customer.isActive(),
-      rewardPoints: customer.rewardPoints,
-      street: address.street,
-      number: address.number,
-      zipcode: address.zip,
-      city: address.city,
-    });
+    expect(customerModel.toJSON()).toStrictEqual(
+      {
+        id: '123',
+        name: customer.name,
+        active: customer.isActive(),
+        rewardPoints: customer.rewardPoints,
+        street: address.street,
+        number: address.number,
+        zipcode: address.zip,
+        city: address.city,
+      },
+    );
   });
 
   it('should find a customer', async () => {

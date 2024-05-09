@@ -1,4 +1,4 @@
-export default interface RepositoryInterface<T> {
+export default interface IRepositoryInterface<T> {
 
   create(entity: T): Promise<void>;
 

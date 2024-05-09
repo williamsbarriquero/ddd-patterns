@@ -2,7 +2,7 @@ import OrderItem from './order-item';
 
 export default class Order {
   private readonly _id: string;
-  private _customerId: string;
+  private readonly _customerId: string;
   private _items: OrderItem[] = [];
 
   constructor(id: string, customerId: string, items: OrderItem[]) {
@@ -25,7 +25,7 @@ export default class Order {
     return this._items;
   }
 
-  validate() {
+  public validate() {
     if (this._id.length === 0) {
       throw new Error('Id is required');
     }
@@ -40,7 +40,20 @@ export default class Order {
     }
   }
 
-  total(): number {
+  public addItem(item: OrderItem): void {
+    if (item === undefined) {
+      throw new Error('item is required');
+    }
+
+    this._items = this._items.filter(x => x.id !== item.id);
+    this._items.push(item);
+  }
+
+  public removeItem(item: OrderItem): void {
+    this._items = this._items.filter(x => x !== item);
+  }
+
+  public total(): number {
     return this._items.reduce(
       (acc, item) => acc + item.orderItemTotal(), 0,
     );

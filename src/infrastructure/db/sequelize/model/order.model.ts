@@ -1,4 +1,12 @@
-import { BelongsTo, Column, ForeignKey, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  ForeignKey,
+  HasMany,
+  Model,
+  PrimaryKey,
+  Table,
+} from 'sequelize-typescript';
 import CustomerModel from './customer.model';
 import OrderItemModel from './order-item.model';
 
@@ -9,24 +17,23 @@ import OrderItemModel from './order-item.model';
 export default class OrderModel extends Model {
   @PrimaryKey
   @Column
-  declare id: string;
+  public declare id: string;
 
   @ForeignKey(() => CustomerModel)
   @Column({ allowNull: false })
-  declare customer_id: string;
+  public declare customerId: string;
 
   @BelongsTo(() => CustomerModel)
-  declare customer: CustomerModel;
+  public declare customer: CustomerModel;
 
   @HasMany(() => OrderItemModel)
-  declare items: OrderItemModel[];
+  public declare items: OrderItemModel[];
 
   @Column({ allowNull: false })
-  declare total: number;
+  public declare total: number;
 
-  toJSON<T extends any>(): T {
+  public toJSON<T extends any>(): T {
     // @ts-ignore
     return super.toJSON();
   }
-
 }

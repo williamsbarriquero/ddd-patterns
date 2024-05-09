@@ -23,7 +23,7 @@ export default class Product {
     return this._price;
   }
 
-  validate() {
+  public validate() {
     if (this._id === '') {
       throw new Error('Id is required');
     }
@@ -35,12 +35,12 @@ export default class Product {
     }
   }
 
-  changeName(name: string) {
+  public changeName(name: string) {
     this._name = name;
     this.validate();
   }
 
-  changePrice(price: number) {
+  public changePrice(price: number) {
     this._price = price;
     this.validate();
   }

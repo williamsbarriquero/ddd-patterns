@@ -1,11 +1,11 @@
-import Order from '../entity/order';
-import Customer from '../entity/customer';
-import OrderItem from '../entity/order-item';
 import { v4 as uuid } from 'uuid';
+import Customer from '../entity/customer';
+import Order from '../entity/order';
+import OrderItem from '../entity/order-item';
 
 export default class OrderService {
 
-  static placeOrder(customer: Customer, items: OrderItem[]): Order {
+  public static placeOrder(customer: Customer, items: OrderItem[]): Order {
     if (items.length === 0) {
       throw new Error('Order mist have at least one item');
     }
@@ -15,7 +15,7 @@ export default class OrderService {
     return order;
   }
 
-  static total(orders: Order[]): number {
+  public static total(orders: Order[]): number {
     return orders.reduce((acc, order) => acc + order.total(), 0);
   }
 }
