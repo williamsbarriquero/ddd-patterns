@@ -73,7 +73,7 @@ describe('Order repository test', () => {
     expect(orderModel.toJSON()).toStrictEqual(
       {
         id: '123',
-        customer_id: '123',
+        customerId: '123',
         total: order.total(),
         items: [
           {
@@ -81,8 +81,8 @@ describe('Order repository test', () => {
             name: orderItem.name,
             price: orderItem.price,
             quantity: orderItem.quantity,
-            order_id: '123',
-            product_id: '123',
+            orderId: '123',
+            productId: '123',
           },
         ],
       },
@@ -124,7 +124,7 @@ describe('Order repository test', () => {
     expect(orderModel.toJSON()).toStrictEqual(
       {
         id: '123',
-        customer_id: '123',
+        customerId: '123',
         total: order.total(),
         items: [
           {
@@ -132,8 +132,8 @@ describe('Order repository test', () => {
             name: orderItem.name,
             price: orderItem.price,
             quantity: orderItem.quantity,
-            order_id: '123',
-            product_id: '123',
+            orderId: '123',
+            productId: '123',
           },
         ],
       });
@@ -160,7 +160,7 @@ describe('Order repository test', () => {
     expect(updatedOrderModel.toJSON()).toStrictEqual(
       {
         id: '123',
-        customer_id: '123',
+        customerId: '123',
         total: order.total(),
         items: [
           {
@@ -168,16 +168,16 @@ describe('Order repository test', () => {
             name: orderItem.name,
             price: orderItem.price,
             quantity: orderItem.quantity,
-            order_id: '123',
-            product_id: '123',
+            orderId: '123',
+            productId: '123',
           },
           {
             id: newOrderItem.id,
             name: newOrderItem.name,
             price: newOrderItem.price,
             quantity: newOrderItem.quantity,
-            order_id: '123',
-            product_id: '456',
+            orderId: '123',
+            productId: '456',
           },
         ],
       });
@@ -220,14 +220,14 @@ describe('Order repository test', () => {
     expect(createdOrderModel.toJSON()).toStrictEqual(
       {
         id: '1',
-        customer_id: '1',
+        customerId: '1',
         items: [
           {
             id: '1',
             name: 'Product 1',
-            order_id: '1',
+            orderId: '1',
             price: 10,
-            product_id: '1',
+            productId: '1',
             quantity: 10,
           },
         ],
@@ -265,22 +265,22 @@ describe('Order repository test', () => {
     expect(updatedOrderModel.toJSON()).toStrictEqual(
       {
         id: '1',
-        customer_id: '1',
+        customerId: '1',
         items: [
           {
             id: '1',
             name: 'Product 1',
-            order_id: '1',
+            orderId: '1',
             price: 10,
-            product_id: '1',
+            productId: '1',
             quantity: 10,
           },
           {
             id: '2',
             name: 'Product 2',
-            order_id: '1',
+            orderId: '1',
             price: 20,
-            product_id: '2',
+            productId: '2',
             quantity: 20,
           },
         ],
@@ -334,22 +334,22 @@ describe('Order repository test', () => {
     expect(createdOrderModel.toJSON()).toStrictEqual(
       {
         id: '1',
-        customer_id: '1',
+        customerId: '1',
         items: [
           {
             id: '1',
             name: 'Product 1',
-            order_id: '1',
+            orderId: '1',
             price: 10,
-            product_id: '1',
+            productId: '1',
             quantity: 10,
           },
           {
             id: '2',
             name: 'Product 2',
-            order_id: '1',
+            orderId: '1',
             price: 20,
-            product_id: '2',
+            productId: '2',
             quantity: 20,
           },
         ],
@@ -371,14 +371,14 @@ describe('Order repository test', () => {
     expect(updatedOrderModel.toJSON()).toStrictEqual(
       {
         id: '1',
-        customer_id: '1',
+        customerId: '1',
         items: [
           {
             id: '1',
             name: 'Product 1',
-            order_id: '1',
+            orderId: '1',
             price: 10,
-            product_id: '1',
+            productId: '1',
             quantity: 10,
           },
         ],

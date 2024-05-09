@@ -9,13 +9,13 @@ export default class OrderRepository implements IOrderRepositoryInterface {
     await OrderModel.create(
       {
         id: entity.id,
-        customer_id: entity.customerId,
+        customerId: entity.customerId,
         total: entity.total(),
         items: entity.items.map(item => ({
           id: item.id,
           name: item.name,
           price: item.price,
-          product_id: item.productId,
+          productId: item.productId,
           quantity: item.quantity,
         })),
       },
@@ -64,7 +64,7 @@ export default class OrderRepository implements IOrderRepositoryInterface {
             // @ts-ignore
             orderId: entity.id,
             price: orderItem.price,
-            product_id: orderItem.productId,
+            productId: orderItem.productId,
             quantity: orderItem.quantity,
           });
       } else {
@@ -73,7 +73,7 @@ export default class OrderRepository implements IOrderRepositoryInterface {
           {
             name: orderItem.name,
             price: orderItem.price,
-            product_id: orderItem.productId,
+            productId: orderItem.productId,
             quantity: orderItem.quantity,
           });
       }
