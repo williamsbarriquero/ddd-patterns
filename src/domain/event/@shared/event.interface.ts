@@ -1,4 +1,4 @@
-export default interface IEventInteface {
+export default interface IEventInterface {
   dataTimeOccurred: Date;
   eventData: any;
 }

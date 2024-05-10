@@ -1,5 +1,5 @@
-import IEventInteface from './event.interface';
+import IEventInterface from './event.interface';
 
-export default interface IEventHandlerInterface<T extends IEventInteface = IEventInteface> {
+export default interface IEventHandlerInterface<T extends IEventInterface = IEventInterface> {
   handle(event: T): void;
 }
