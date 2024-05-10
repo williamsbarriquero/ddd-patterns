@@ -11,10 +11,10 @@ describe('Domain events tests', () => {
     eventDispatcher.register('product.created.event', eventHandler);
 
     expect(
-      eventDispatcher.getEventHandlers['product.created.event'],
+      eventDispatcher.eventHandlers['product.created.event'],
     ).toBeDefined();
     expect(
-      eventDispatcher.getEventHandlers['product.created.event'].length,
+      eventDispatcher.eventHandlers['product.created.event'].length,
     ).toBe(1);
   });
 });
