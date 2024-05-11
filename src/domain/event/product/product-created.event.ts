@@ -4,8 +4,8 @@ export default class ProductCreatedEvent implements IEventInterface {
   dataTimeOccurred: Date;
   eventData: any;
 
-  constructor(dataTimeOccurred: Date, eventData: any) {
-    this.dataTimeOccurred = dataTimeOccurred;
+  constructor(eventData: any) {
+    this.dataTimeOccurred = new Date();
     this.eventData = eventData;
   }
 }

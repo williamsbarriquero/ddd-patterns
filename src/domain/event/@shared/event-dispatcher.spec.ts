@@ -1,5 +1,6 @@
 import SendEmailWhenProductIsCreatedHandler
   from '../product/handler/send-email-when-product-is-created.handler';
+import ProductCreatedEvent from '../product/product-created.event';
 import EventDispatcher from './event-dispatcher';
 
 describe('Domain events tests', () => {
@@ -8,16 +9,16 @@ describe('Domain events tests', () => {
     const eventDispatcher = new EventDispatcher();
     const eventHandler = new SendEmailWhenProductIsCreatedHandler();
 
-    eventDispatcher.register('product.created.event', eventHandler);
+    eventDispatcher.register('ProductCreatedEvent', eventHandler);
 
     expect(
-      eventDispatcher.eventHandlers['product.created.event'],
+      eventDispatcher.eventHandlers.ProductCreatedEvent,
     ).toBeDefined();
     expect(
-      eventDispatcher.eventHandlers['product.created.event'].length,
+      eventDispatcher.eventHandlers.ProductCreatedEvent.length,
     ).toBe(1);
     expect(
-      eventDispatcher.eventHandlers['product.created.event'][0],
+      eventDispatcher.eventHandlers.ProductCreatedEvent[0],
     ).toMatchObject(eventHandler);
   });
 
@@ -25,19 +26,19 @@ describe('Domain events tests', () => {
     const eventDispatcher = new EventDispatcher();
     const eventHandler = new SendEmailWhenProductIsCreatedHandler();
 
-    eventDispatcher.register('product.created.event', eventHandler);
+    eventDispatcher.register('ProductCreatedEvent', eventHandler);
 
     expect(
-      eventDispatcher.eventHandlers['product.created.event'][0],
+      eventDispatcher.eventHandlers.ProductCreatedEvent[0],
     ).toMatchObject(eventHandler);
 
-    eventDispatcher.unregister('product.created.event', eventHandler);
+    eventDispatcher.unregister('ProductCreatedEvent', eventHandler);
 
     expect(
-      eventDispatcher.eventHandlers['product.created.event'],
+      eventDispatcher.eventHandlers.ProductCreatedEvent,
     ).toBeDefined();
     expect(
-      eventDispatcher.eventHandlers['product.created.event'].length,
+      eventDispatcher.eventHandlers.ProductCreatedEvent.length,
     ).toBe(0);
   });
 
@@ -45,15 +46,15 @@ describe('Domain events tests', () => {
     const eventDispatcher = new EventDispatcher();
     const eventHandler = new SendEmailWhenProductIsCreatedHandler();
 
-    eventDispatcher.register('product.created.event', eventHandler);
-    eventDispatcher.register('product.created.event', eventHandler);
+    eventDispatcher.register('ProductCreatedEvent', eventHandler);
+    eventDispatcher.register('ProductCreatedEvent', eventHandler);
     eventDispatcher.register('product.updated.event', eventHandler);
 
     expect(
-      eventDispatcher.eventHandlers['product.created.event'][0],
+      eventDispatcher.eventHandlers.ProductCreatedEvent[0],
     ).toMatchObject(eventHandler);
     expect(
-      eventDispatcher.eventHandlers['product.created.event'][1],
+      eventDispatcher.eventHandlers.ProductCreatedEvent[1],
     ).toMatchObject(eventHandler);
     expect(
       eventDispatcher.eventHandlers['product.updated.event'][0],
@@ -62,10 +63,36 @@ describe('Domain events tests', () => {
     eventDispatcher.unregisterAll();
 
     expect(
-      eventDispatcher.eventHandlers['product.created.event'],
+      eventDispatcher.eventHandlers.ProductCreatedEvent,
     ).toBeUndefined();
     expect(
       eventDispatcher.eventHandlers['product.updated.event'],
     ).toBeUndefined();
+  });
+
+  it('should notify all event handlers', () => {
+    const eventDispatcher = new EventDispatcher();
+    const eventHandler = new SendEmailWhenProductIsCreatedHandler();
+    const spyEventHandler = jest.spyOn(eventHandler, 'handle');
+
+    eventDispatcher.register('ProductCreatedEvent', eventHandler);
+
+    expect(
+      eventDispatcher.eventHandlers.ProductCreatedEvent[0],
+    ).toMatchObject(eventHandler);
+
+    const productCreatedEvent = new ProductCreatedEvent(
+      {
+        name: 'Product created',
+        description: 'Product created description',
+        price: 100,
+      },
+    );
+
+    // Quando o notify for executado
+    // o SendEmailWhenProductIsCreatedHandler.handle() deve ser chamado
+    eventDispatcher.notify(productCreatedEvent);
+
+    expect(spyEventHandler).toHaveBeenCalled();
   });
 });
