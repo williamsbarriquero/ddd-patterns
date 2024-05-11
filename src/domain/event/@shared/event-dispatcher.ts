@@ -23,9 +23,17 @@ export default class EventDispatcher implements IEventDispatcherInterface {
   }
 
   public unregister(eventName: string, eventHandler: IEventHandlerInterface): void {
+    if (this._eventHandlers[eventName]) {
+      const index = this._eventHandlers[eventName].indexOf(eventHandler);
+
+      if (index !== -1) {
+        this._eventHandlers[eventName].splice(index, 1);
+      }
+    }
   }
 
   public unregisterAll(): void {
+    this._eventHandlers = {};
   }
 
 }
