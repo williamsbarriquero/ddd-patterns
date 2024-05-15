@@ -1,6 +1,5 @@
-import IEventHandlerInterface from '../../@shared/event-handler.interface';
+import IEventHandlerInterface from '../../../@shared/event/event-handler.interface';
 import CustomerAddressChangedEvent from '../customer-address-changed.event';
-import CustomerCreatedEvent from '../customer-created.event';
 
 export default class SendConsoleLogHandler
   implements IEventHandlerInterface<CustomerAddressChangedEvent> {

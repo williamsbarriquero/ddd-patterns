@@ -1,6 +1,6 @@
-import IEventInterface from '../@shared/event.interface';
+import IEventInterface from '../../@shared/event/event.interface';
 
-export default class CustomerCreatedEvent implements IEventInterface {
+export default class ProductCreatedEvent implements IEventInterface {
   public readonly dataTimeOccurred: Date;
   public readonly eventData: any;
 

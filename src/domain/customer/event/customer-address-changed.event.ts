@@ -1,4 +1,4 @@
-import IEventInterface from '../@shared/event.interface';
+import IEventInterface from '../../@shared/event/event.interface';
 
 export default class CustomerAddressChangedEvent implements IEventInterface {
   public readonly eventData: any;

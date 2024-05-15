@@ -1,12 +1,12 @@
-import IEventHandlerInterface from '../../@shared/event-handler.interface';
+import IEventHandlerInterface from '../../../@shared/event/event-handler.interface';
 import CustomerCreatedEvent from '../customer-created.event';
 
-export default class SendConsoleLog1Handler
+export default class SendConsoleLog2Handler
   implements IEventHandlerInterface<CustomerCreatedEvent> {
   public handle(event: CustomerCreatedEvent): void {
     // tslint:disable-next-line:no-console
     console.log(
-      `This is the first console.log of the event: ${event.constructor.name}`,
+      `This is the second console.log of the event: ${event.constructor.name}`,
     );
   }
 }
