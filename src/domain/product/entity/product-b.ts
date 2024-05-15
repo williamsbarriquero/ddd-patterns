@@ -1,6 +1,6 @@
 import IProductInterface from './product.interface';
 
-export default class Product implements IProductInterface {
+export default class ProductB implements IProductInterface {
   private readonly _id: string;
   private _name: string;
   private _price: number;
@@ -22,7 +22,7 @@ export default class Product implements IProductInterface {
   }
 
   get price(): number {
-    return this._price;
+    return this._price * 2;
   }
 
   public validate() {
