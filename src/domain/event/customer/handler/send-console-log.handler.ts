@@ -1,9 +1,10 @@
 import IEventHandlerInterface from '../../@shared/event-handler.interface';
+import CustomerAddressChangedEvent from '../customer-address-changed.event';
 import CustomerCreatedEvent from '../customer-created.event';
 
 export default class SendConsoleLogHandler
-  implements IEventHandlerInterface<CustomerCreatedEvent> {
-  public handle(event: CustomerCreatedEvent): void {
+  implements IEventHandlerInterface<CustomerAddressChangedEvent> {
+  public handle(event: CustomerAddressChangedEvent): void {
 
     const customerAddress = event.eventData.address;
     const customerId = event.eventData.id;
